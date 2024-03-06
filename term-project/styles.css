@@ -299,3 +299,53 @@ html,body{
     box-shadow: 0 0.75rem 3rem -1rem hsla(0,0%,0%,0.25);
 
 }
+
+.contact-us-container {
+    display: flex;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-us-container h1 {
+    margin-top: 1rem;
+    color: #555;
+    text-wrap: wrap;
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.contact-us-form {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.user-name, .email, .message{
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff;
+    background-color: transparent;
+    border-radius: 25px;
+    padding: 0.75rem;
+}
+
+.form-button {
+    display: flex;
+    background-color: #E79A60;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0,0%,0%,0.25);
+
+    border-style: none;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem
+}
+.form-button:hover {
+    background-color: #c18150;
+
+}
+
+
