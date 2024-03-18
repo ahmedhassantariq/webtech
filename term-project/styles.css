@@ -372,5 +372,26 @@ html,body{
     padding: 1rem;
 }
 
+.man-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.edit-button, .delete-button {
+    display: flex;
+    background-color: #E79A60;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0,0%,0%,0.25);
+    color: #ffffff;
+    border-style: none;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    padding: 0.25rem
+}
+
+
+
 
 

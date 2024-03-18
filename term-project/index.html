@@ -18,14 +18,16 @@
                 let uname = document.getElementById("form-username");
                 let email = document.getElementById("form-email");
                 let message = document.getElementById("form-message");
-                if(uname.value && email.value && message.value){
-                    console.log("Form is Valid");
+                if(uname.value && email.value && message.value && email.value == value.email){
+                    
+                    document.getElementById('submitBtn').style.backgroundColor = '#fdb681';
                 }else{
                     console.log("Form is invalid");
                     event.preventDefault();
                     uname.classList.add('error');
                     email.classList.add("error");
                     message.classList.add("error")
+                    document.getElementById('submitBtn').style.backgroundColor = 'red';
                 }
             }
         </script>

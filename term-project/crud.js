@@ -13,6 +13,12 @@ function displayStories() {
             `<div class="mb-3">
                   <h3>${story.title}</h3>
                   <div>${story.description}</div>
+  
+                  <div class='man-button-container'>
+                  <button class="edit-button" data-id="${story.id}">Edit</button>
+                  <button class="delete-button" data-id="${story.id}">Delete</button>
+
+              </div>
               </div>
               <hr />
               `
@@ -24,14 +30,17 @@ function displayStories() {
       },
     });
   }
-  // Function to delete a story
   function deleteStory() {
     let storyId = $(this).attr("data-id");
+    fetch('https://fakestoreapi.com/products/1',{
+            method:"DELETE"
+        })
     $.ajax({
-      url: "https://usmanlive.com/wp-json/api/stories/" + storyId,
+      url: "https://fakestoreapi.com/products/" + storyId,
       method: "DELETE",
       success: function () {
-        displayStories(); // Refresh the list after deleting a story
+        displayStories();
+        console.log("Successfully Deleted " + storyId)
       },
       error: function (error) {
         console.error("Error deleting story:", error);
@@ -47,10 +56,9 @@ function displayStories() {
       $.ajax({
         url: "https://fakestoreapi.com/products/" + storyId,
         method: "POST",
-  
         data: { title, description },
         success: function () {
-          displayStories(); // Refresh the list after creating a new story
+          displayStories();
         },
         error: function (error) {
           console.error("Error creating story:", error);
@@ -62,7 +70,7 @@ function displayStories() {
         method: "POST",
         data: { title, description },
         success: function () {
-          displayStories(); // Refresh the list after creating a new story
+          displayStories();
         },
         error: function (error) {
           console.error("Error creating story:", error);
@@ -74,13 +82,13 @@ function displayStories() {
     event.preventDefault();
     let storyId = $(this).attr("data-id");
     $.ajax({
-      url: "https://usmanlive.com/wp-json/api/stories/" + storyId,
+      url: "https://fakestoreapi.com/products/" + storyId,
       method: "GET",
       success: function (data) {
         console.log(data);
         $("#clearBtn").show();
         $("#crud-title").val(data.title);
-        $("#crud-description").val(data.content);
+        $("#crud-description").val(data.description);
         $("#createBtn").html("Update");
         $("#createBtn").attr("data-id", data.id);
       },
@@ -91,9 +99,10 @@ function displayStories() {
   }
   $(document).ready(function () {
     displayStories();
-    $(document).on("click", ".btn-del", deleteStory);
-    $(document).on("click", ".btn-edit", editBtnClicked);
-    // Create Form Submission
+    $(document).on("click", ".delete-button", deleteStory);
+    $(document).on("click", ".edit-button", editBtnClicked);
+
+
     $("#createForm").submit(handleFormSubmission);
     $("#clearBtn").on("click", function (e) {
       e.preventDefault();
