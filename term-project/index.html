@@ -15,13 +15,17 @@
                 console.log("Handle Form Submit Called");
                 console.log(event);
                 
-                let search = document.getElementById("search");
-                if(search.value){
+                let uname = document.getElementById("form-username");
+                let email = document.getElementById("form-email");
+                let message = document.getElementById("form-message");
+                if(uname.value && email.value && message.value){
                     console.log("Form is Valid");
                 }else{
                     console.log("Form is invalid");
                     event.preventDefault();
-                    search.classList.add("error")
+                    uname.classList.add('error');
+                    email.classList.add("error");
+                    message.classList.add("error")
                 }
             }
         </script>
@@ -29,12 +33,13 @@
 
     <body>
         <div class="navbar-container">
-            <img class='shape' src='assets/logo.svg'alt='' />
+            <img src='assets/logo.svg'alt='' />
             <div class="navbar-container-links">
                 <a class="un" href="#home">Home</a>
                 <a class="un" href="#skills">Skills</a>
                 <a class="un" href="#about">About</a>
                 <a class="un" href="#contact">Contact</a>
+                <a class="un" href="/term-project/stories.html">Stories</a>
             </div>
             <button class="signin-button" role="button" >Sign Up</button>
         </div>
@@ -58,11 +63,10 @@
                     </div>
                     
                     <div class="slider">
-                        <img id="slide-1" class='shape' src='assets/discover-1.jpg' />
-                        <img id="slide-2" class='shape' src='assets/discover-2.jpg' />
-                        <img id="slide-3" class='shape' src='assets/discover-3.jpg' />
-                        <img id="slide-4" class='shape' src='assets/discover-4.jpg' />
-
+                        <img id="slide-1" class='shape' src='/term-project/assets/discover-1.jpg' />
+                        <img id="slide-2" class='shape' src='/term-project/assets/discover-2.jpg' />
+                        <img id="slide-3" class='shape' src='/term-project/assets/discover-3.jpg' />
+                        <img id="slide-4" class='shape' src='/term-project/assets/discover-4.jpg' />
                     </div>
                 </div>
         </div>
@@ -92,7 +96,7 @@
             <div class="discover-dialog-container">
                 <div class="discover-picture-container">
                     <!-- <img id="discover-img" class='shape' src='assets/discover-2.jpg' /> -->
-                    <video src="/Github/web-technologies/term-project/assets/discover-video.mp4" autoplay loop id="discover-video" class="shape"></video>
+                    <video src="/term-project/assets/discover-video.mp4" controls autoplay loop id="discover-video" class="shape"></video>
                 </div>
 
                 <div class="discover-text-container">
@@ -112,9 +116,9 @@
     
             <form class="contact-us-form" action="">
                 <form action="http://google.com/search">
-                    <input id="search" type="text" name="q" class="user-name" placeholder="Name">
-                    <input id="search" type="email" name="q" class="email" placeholder="Email">
-                    <input id="search" type="text" name="q" class="message" placeholder="Message">
+                    <input id="form-username" type="text" name="q" class="user-name" placeholder="Name">
+                    <input id="form-email" type="email" name="q" class="email" placeholder="Email">
+                    <input id="form-message" type="text" name="q" class="message" placeholder="Message">
 
                     <input id="submitBtn" type="submit" value="Search" onclick="handleFormSubmit(event)" class="form-button"/>
                 </form>

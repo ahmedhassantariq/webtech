@@ -302,8 +302,8 @@ html,body{
 
 .contact-us-container {
     display: flex;
-    background-color: var(--primary-color);
     flex-direction: column;
+    padding: 1rem;
     align-items: center;
     justify-content: center;
   }
@@ -326,17 +326,27 @@ html,body{
     display: flex;
     border-style: solid;
     border-width: 1px;
-    border-color: #ffffff;
+    border-color: var(--primary-color);
     background-color: transparent;
     border-radius: 25px;
     padding: 0.75rem;
+}
+
+.user-name:hover, .email:hover, .message:hover {
+    outline:none;
+    border-color: #fdb681;
+}
+
+.user-name:focus, .email:focus, .message:focus {
+    outline:none;
+    border-color: #E79A60;
 }
 
 .form-button {
     display: flex;
     background-color: #E79A60;
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0,0%,0%,0.25);
-
+    color: #ffffff;
     border-style: none;
     border-radius: 25px;
     align-items: center;
@@ -347,5 +357,20 @@ html,body{
     background-color: #c18150;
 
 }
+
+
+.crud-form {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.storiesList-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 1rem;
+}
+
 
 
