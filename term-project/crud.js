@@ -1,7 +1,7 @@
 // Function to fetch and display stories
 function displayStories() {
     $.ajax({
-      url: "https://fakestoreapi.com/products",
+      url: "http://localhost:8080/api/user/getUsers",
       method: "GET",
       dataType: "json",
       success: function (data) {
@@ -11,12 +11,12 @@ function displayStories() {
         $.each(data, function (index, story) {
           storiesList.append(
             `<div class="mb-3">
-                  <h3>${story.title}</h3>
-                  <div>${story.description}</div>
+                  <h3>${story.firstName} ${story.lastName}</h3>
+                  <div>${story.accountNumber}</div>
   
                   <div class='man-button-container'>
-                  <button class="edit-button" data-id="${story.id}">Edit</button>
-                  <button class="delete-button" data-id="${story.id}">Delete</button>
+                  <button class="edit-button" data-id="${story.accountNumber}">Edit</button>
+                  <button class="delete-button" data-accountNumber="${story.accountNumber}">Delete</button>
 
               </div>
               </div>
@@ -31,13 +31,12 @@ function displayStories() {
     });
   }
   function deleteStory() {
-    let storyId = $(this).attr("data-id");
-    fetch('https://fakestoreapi.com/products/1',{
-            method:"DELETE"
-        })
+    let accountNumber = $(this).attr("data-accountNumber");
     $.ajax({
-      url: "https://fakestoreapi.com/products/" + storyId,
-      method: "DELETE",
+      url: "http://localhost:8080/api/user/delete",
+      dataType: 'json',
+      data:{accountNumber},
+      method: "POST",
       success: function () {
         displayStories();
         console.log("Successfully Deleted " + storyId)
