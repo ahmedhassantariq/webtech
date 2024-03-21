@@ -334,7 +334,7 @@ html,body{
     flex-direction: column;
 }
 
-.user-name, .email, .message{
+.user-firstName, .user-lastName, .user-email{
     display: flex;
     border-style: solid;
     border-width: 1px;
@@ -344,12 +344,12 @@ html,body{
     padding: 0.75rem;
 }
 
-.user-name:hover, .email:hover, .message:hover {
+.user-firstName:hover, .user-lastName:hover, .user-email:hover {
     outline:none;
     border-color: #fdb681;
 }
 
-.user-name:focus, .email:focus, .message:focus {
+.user-firstName:focus, .user-email:focus, .user-lastName:focus {
     outline:none;
     border-color: #E79A60;
 }

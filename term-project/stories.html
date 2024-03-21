@@ -23,14 +23,15 @@
         </div>
 
         <div class="contact-us-container">
-            <h1>Stories</h1>
+            <h1>Bank Accounts</h1>
     
-            <form class="crud-form" id="createForm">
-                    <input id="crud-title" type="text" name="q" class="user-name" placeholder="Product Title">
-                    <input id="crud-description" type="text" name="q" class="email" placeholder="Product Description">
+            <form class="crud-form" id="createForm" action="register" method="post">
+                    <input id="crud-firstName" type="text" name="q" class="user-firstName" placeholder="First Name">
+                    <input id="crud-lastName" type="text" name="q" class="user-lastName" placeholder="Last Name">
+                    <input id="crud-email" type="email" name="q" class="user-email" placeholder="Email">
                     <input id="creatBtn" type="submit" value="Create" class="form-button"/>                
             </form>
-            <div class="storiesList-container" id="storiesList"></div>
+            <div class="storiesList-container" id="accountList"></div>
         </div>
 
 

@@ -5,18 +5,18 @@ function displayStories() {
       method: "GET",
       dataType: "json",
       success: function (data) {
-        var storiesList = $("#storiesList");
-        storiesList.empty();
+        var accountList = $("#accountList");
+        accountList.empty();
   
-        $.each(data, function (index, story) {
-          storiesList.append(
+        $.each(data, function (index, account) {
+          accountList.append(
             `<div class="mb-3">
-                  <h3>${story.firstName} ${story.lastName}</h3>
-                  <div>${story.accountNumber}</div>
-  
+                  <h3>${account.firstName} ${account.lastName}</h3>
+                  <div><h5>Account Number</h5>${account.accountNumber}</div>
+                  <div><h5>Account Balance</h5>${account.accountBalance}</div>
                   <div class='man-button-container'>
-                  <button class="edit-button" data-id="${story.accountNumber}">Edit</button>
-                  <button class="delete-button" data-accountNumber="${story.accountNumber}">Delete</button>
+                  <button class="edit-button" data-accountNumber="${account.accountNumber}">Edit</button>
+                  <button class="delete-button" data-accountNumber="${account.accountNumber}">Delete</button>
 
               </div>
               </div>
@@ -32,14 +32,23 @@ function displayStories() {
   }
   function deleteStory() {
     let accountNumber = $(this).attr("data-accountNumber");
-    $.ajax({
+    $.ajax
+    ({
+     
+
+      type: "POST",
       url: "http://localhost:8080/api/user/delete",
-      dataType: 'json',
-      data:{accountNumber},
-      method: "POST",
+      data: JSON.stringify({
+          "accountNumber": accountNumber,  
+      }),
+
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+  
+
       success: function () {
         displayStories();
-        console.log("Successfully Deleted " + storyId)
+        console.log("Successfully Deleted " + accountNumber)
       },
       error: function (error) {
         console.error("Error deleting story:", error);
@@ -49,13 +58,32 @@ function displayStories() {
   function handleFormSubmission(event) {
     event.preventDefault();
     let storyId = $("#createBtn").attr("data-id");
-    var title = $("#crud-title").val();
-    var description = $("#crud-description").val();
+    var firstName = $("#crud-firstName").val();
+    var lastName = $("#crud-lastName").val();
+    var user_email = $("#crud-email").val();
     if (storyId) {
       $.ajax({
-        url: "https://fakestoreapi.com/products/" + storyId,
-        method: "POST",
-        data: { title, description },
+
+        type: "POST",
+        url: "http://localhost:8080/api/user",
+        data: JSON.stringify(
+          {
+            "firstName":firstName,
+            "lastName":lastName,
+            "otherName":"-",
+            "gender":"male",
+            "address":"1234Street, Marvel colony, andromeda, universe",
+            "stateOfOrigin":"Abia",
+            "accountBalance":"2000",
+            "email":user_email,
+            "phoneNumber":"03364042531",
+            "alternativePhoneNumber":"03271255557",
+            "dateOfBirth":"2002:07-20"
+        }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+
         success: function () {
           displayStories();
         },
@@ -64,10 +92,29 @@ function displayStories() {
         },
       });
     } else {
+
       $.ajax({
-        url: "https://fakestoreapi.com/products/",
-        method: "POST",
-        data: { title, description },
+        type: "POST",
+        url: "http://localhost:8080/api/user",
+        data: JSON.stringify(
+          {
+            "firstName":firstName,
+            "lastName":lastName,
+            "otherName":"-",
+            "gender":"male",
+            "address":"1234Street, Marvel colony, andromeda, universe",
+            "stateOfOrigin":"Abia",
+            "accountBalance":"2000",
+            "email":user_email,
+            "phoneNumber":"03364042531",
+            "alternativePhoneNumber":"03271255557",
+            "dateOfBirth":"2002:07-20"
+        }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+
+
         success: function () {
           displayStories();
         },
@@ -79,17 +126,28 @@ function displayStories() {
   }
   function editBtnClicked(event) {
     event.preventDefault();
-    let storyId = $(this).attr("data-id");
+    let accountNo = $(this).attr("data-accountNumber");
+    console.log(accountNo)
     $.ajax({
-      url: "https://fakestoreapi.com/products/" + storyId,
-      method: "GET",
+              
+      type: "GET",
+        url: "http://localhost:8080/api/user/nameEnquiry",
+        data: JSON.stringify(
+          {
+            "accountNumber":accountNo,
+        }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+
+
       success: function (data) {
         console.log(data);
         $("#clearBtn").show();
-        $("#crud-title").val(data.title);
-        $("#crud-description").val(data.description);
+        $("#crud-firstName").val(data.firstName);
+        $("#crud-lastName").val(data.lastName);
         $("#createBtn").html("Update");
-        $("#createBtn").attr("data-id", data.id);
+        $("#createBtn").attr("data-id", data.accountNumber);
       },
       error: function (error) {
         console.error("Error deleting story:", error);
