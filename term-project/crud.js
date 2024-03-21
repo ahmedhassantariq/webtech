@@ -123,34 +123,92 @@ function displayStories() {
         },
       });
     }
+}
+
+
+
+function handleFormUpdate(event) {
+  event.preventDefault();
+  var accountNumber = $("#updateBtn").val();
+  console.log(accountNumber);
+  var firstName = $("#crud-firstName").val();
+  var lastName = $("#crud-lastName").val();
+  var user_email = $("#crud-email").val();
+  if (accountNumber) {
+    $.ajax({
+
+      type: "POST",
+      url: "http://localhost:8080/api/user/update",
+      data: JSON.stringify(
+        {
+          "accountNumber":accountNumber,
+          "firstName":firstName,
+          "lastName":lastName,
+          "email":user_email
+      }
+      ),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+
+      success: function () {
+        displayStories();
+      },
+      error: function (error) {
+        console.error("Error creating story:", error);
+      },
+    });
+  } else {
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8080/api/user/update",
+      data: JSON.stringify(
+        {
+          "accountNumber":accountNumber,
+          "firstName":firstName,
+          "lastName":lastName,
+          "email":user_email
+      }
+      ),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+
+
+      success: function () {
+        displayStories();
+      },
+      error: function (error) {
+        console.error("Error creating story:", error);
+      },
+    });
   }
+}
   function editBtnClicked(event) {
     event.preventDefault();
-    let accountNo = $(this).attr("data-accountNumber");
-    console.log(accountNo)
+    var accountNumber = $(this).attr("data-accountNumber");
+    $("#updateBtn").val(accountNumber);
+    console.log(accountNumber);
     $.ajax({
               
       type: "GET",
         url: "http://localhost:8080/api/user/nameEnquiry",
-        data: JSON.stringify(
-          {
-            "accountNumber":accountNo,
-        }
-        ),
+        data:{accountNumber},
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-
-
       success: function (data) {
+
         console.log(data);
-        $("#clearBtn").show();
+        $("#createBtn").hide();
+        $("#updateBtn").show();
+        
         $("#crud-firstName").val(data.firstName);
         $("#crud-lastName").val(data.lastName);
+        $("#crud-email").val(data.email);
         $("#createBtn").html("Update");
         $("#createBtn").attr("data-id", data.accountNumber);
       },
       error: function (error) {
-        console.error("Error deleting story:", error);
+        console.error(error);
       },
     });
   }
@@ -158,15 +216,8 @@ function displayStories() {
     displayStories();
     $(document).on("click", ".delete-button", deleteStory);
     $(document).on("click", ".edit-button", editBtnClicked);
-
-
+    $(document).on("click", ".form-button-update", handleFormUpdate);
+    $("#updateBtn").hide();
     $("#createForm").submit(handleFormSubmission);
-    $("#clearBtn").on("click", function (e) {
-      e.preventDefault();
-      $("#clearBtn").hide();
-      $("#createBtn").removeAttr("data-id");
-      $("#createBtn").html("Create");
-      $("#crud-title").val("");
-      $("#crud-description").val("");
-    });
+    
   });
