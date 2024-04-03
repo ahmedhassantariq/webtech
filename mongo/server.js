@@ -41,6 +41,7 @@ app.get("api/persons", async function(req, res){
 
 
 
+const connectionString = "mongodb+srv://ahmedhassantariq:ahmedhassantariq@cluster0.wt9ns.mongodb.net/";
 
 app.listen(port, ()=> console.log(`Server running on port${port}`))
 mongoose.connect(connectionString).then(
