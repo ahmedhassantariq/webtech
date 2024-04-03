@@ -5,5 +5,7 @@ function showtext() {
 }
 
 $(document).ready(function () {
-    $(document).on("click", ".img", showtext);
+    $("img").mouseenter(function(){
+        showtext();
+      });
   });

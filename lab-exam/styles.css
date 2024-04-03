@@ -15,13 +15,6 @@ html,body{
     scroll-behavior: smooth;
 }
 
-:root {
-  
-    --primary: #2d2e32;
-    --secondary: #f9f9f9;
-  
-}
-
 .navbar-container {
     position: static;
     display: flex;
@@ -130,6 +123,11 @@ html,body{
 .hero-headline-text h2 {
     font-size: 28px;
 }
+
+.hero-headline-text h2:hover {
+    cursor: pointer;
+    color: blue;
+}
 .hero-headline-text p {
     margin-top: 1rem;
 }
@@ -152,6 +150,7 @@ html,body{
 .news img {
     width: 350px;
     height: 225px;
+    cursor: pointer;
 }
 .news p {
     margin-top: 1rem;
