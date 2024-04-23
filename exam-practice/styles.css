@@ -1,0 +1,21 @@
+.main-div {
+    display: flex;
+    
+}
+
+h1 {
+    color: aqua;
+}
+
+.second-div {
+    background-color: orange;
+    display: flex;
+    flex-wrap: nowrap;
+    
+}
+
+@media screen and (max-width: 500px) {
+    .second-div {
+        background-color: blue;
+    }
+}
