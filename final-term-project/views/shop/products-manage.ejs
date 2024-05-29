@@ -9,6 +9,7 @@
         <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Price</th>
+        <th scope="col">Featured</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
                 <td><%= products[index].title %></td>
                 <td><%= products[index].description %></td>
                 <td><%= products[index].price %></td>
+                <td><%= products[index].isFeatured %></td>
                 <td>
                         <a href="/manage/delete/<%= products[index]._id %>">Del</a>
                         <a href="/manage/edit/<%= products[index]._id %>">Edit</a>

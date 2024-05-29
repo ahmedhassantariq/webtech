@@ -29,6 +29,11 @@ router.get("/new", (req, res) => {
   if(uploadResult){
     req.body.image = uploadResult.url;
   }
+  if(req.body.isFeatured == "on"){
+    req.body.isFeatured = true;
+  } else {
+    req.body.isFeatured = false;
+  }
   let product = new Product(req.body);
     await product.save();
 

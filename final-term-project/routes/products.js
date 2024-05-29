@@ -6,6 +6,10 @@ const Product = require("../models/Product");
 router.get("/book/:id", async (req, res) => {
   let product = await Product.findById(req.params.id);
   let cart = req.cookies.cart;
+  let visitedProducts = req.session.visitedProducts;
+  
+  if(!visitedProducts) req.session.visitedProducts = [];
+  req.session.visitedProducts.push(product._id);
   let isAdded = false;
   if (!cart) cart = [];
   if(cart.some(item => item.id === req.params.id)){
@@ -113,9 +117,11 @@ router.post("/:page?", async (req, res) => {
   let page = req.params.page ? req.params.page : 1;
   let pageSize = 5;
   let skip = (page - 1) * pageSize;
-  let total = await Product.countDocuments();
+
+  let products = await Product.find({title: { $regex:req.body.search, $options: 'i'} });
+  let total = await Product.countDocuments({title: { $regex:req.body.search, $options: 'i'} });
+  
   let totalPages = Math.ceil(total / pageSize);
-  let products = await Product.find({title: { $regex:req.body.search, $options: 'i'} })
   let cart = req.cookies.cart;
   if (!cart) cart = [];
   return res.render("shop/shop", {

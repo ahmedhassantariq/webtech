@@ -19,6 +19,36 @@
     </svg>
 </div>
 
+<div class="shop-list-align">
+    <% for( let index = 0; index < featuredProducts.length; index++ ) { %>
+                    
+        <div class="shop-product-container">
+            <a id="shop-book-link" href="/shop/book/<%= featuredProducts[index]._id %>">
+            <div class="shop-product-image-container">
+                <img src="<%= featuredProducts[index].image %>"/>
+            </div>
+            <div class="shop-product-text-container">
+                <p><%= featuredProducts[index]._id %></h3></p>
+                <h3><%= featuredProducts[index].title %></h3></a>
+                <p><%= featuredProducts[index].description %></p>
+            </div>
+    
+            <div class="shop-product-button-container">
+                <button id="see-more-book" onclick="window.location='/shop/book/<%= featuredProducts[index]._id %>'">See more</button>
+                <% if(cart.some(item => item.id === featuredProducts[index]._id.toString())) { %>
+                    <button id="delete-from-cart-book" onclick="window.location='/shop/delete-from-cart/<%= featuredProducts[index]._id %>'">-</button>
+                    <% } else {  %>
+                <button id="add-to-cart-book" onclick="window.location='/shop/add-to-cart/<%= featuredProducts[index]._id %>'">+</button>                    
+                <% } %>
+            </div>
+        </div>
+    
+        <% if(featuredProducts.length-1!=index){ %><div class="shop-books-table-line"></div> <% } %>
+        
+    <% } %>
+    
+    </div>
+
 
 <div class="homepage-components-container">
 
@@ -72,3 +102,5 @@
         <button id="homepage-write-story-button" onclick="window.location='/contact-us'">Write now</button>
     </div>
 </div>
+
+

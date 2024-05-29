@@ -30,10 +30,11 @@ server.use(mainMiddleware)
 
 
 //Routes
+server.use("/", require("./routes/home"));
 server.use("/shop", require("./routes/products"));
 server.use("/portfolio" ,require("./routes/portfolios"));
 server.use("/contact-us", require("./routes/contact"));
-server.use("/contact-us", require("./routes/contact"));
+server.use("/visited", require("./routes/visited"));
 
 server.use("/checkout", userAuthMiddleware, require("./routes/checkout"));
 
@@ -51,9 +52,9 @@ server.use("/", require("./routes/auth"));
 
 
 
-server.get("/", async(req, res)=>{
-    res.render("homepage")
-})
+// server.get("/", async(req, res)=>{
+//     res.render("homepage")
+// })
 
 
 
@@ -73,7 +74,7 @@ server.listen(4000, ()=>{
 
 
 
-mongoose.connect(process.env.MONGO_DB).then(
+mongoose.connect("mongodb://localhost:27017/").then(
     () => {
         console.log("DB connected")
     }

@@ -1,0 +1,24 @@
+<% for( let index = 0; index < visitedProducts.length; index++ ) { %>
+                
+    <div class="shop-product-container">
+        <a id="shop-book-link" href="/shop/book/<%= visitedProducts[index]._id %>">
+        <div class="shop-product-image-container">
+            <img src="<%= visitedProducts[index].image %>"/>
+        </div>
+        <div class="shop-product-text-container">
+            <p><%= visitedProducts[index]._id %></h3></p>
+            <h3><%= visitedProducts[index].title %></h3></a>
+            <p><%= visitedProducts[index].description %></p>
+        </div>
+
+        <div class="shop-product-button-container">
+            <button id="see-more-book" onclick="window.location='/shop/book/<%= featuredProducts[index]._id %>'">See more</button>
+            <% if(cart.some(item => item.id === visitedProducts[index]._id.toString())) { %>
+                <button id="delete-from-cart-book" onclick="window.location='/shop/delete-from-cart/<%= visitedProducts[index]._id %>'">-</button>
+                <% } else {  %>
+            <button id="add-to-cart-book" onclick="window.location='/shop/add-to-cart/<%= visitedProducts[index]._id %>'">+</button>                    
+            <% } %>
+        </div>
+    </div>
+    
+<% } %>
