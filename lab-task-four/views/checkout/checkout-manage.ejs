@@ -1,0 +1,38 @@
+<div>
+    <h1>Manage Checkouts</h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Postal</th>
+            <th scope="col">Cart</th>
+            <th scope="col">Actions</th>
+    
+          </tr>
+        </thead>
+        <tbody>
+            <% for( let index = 0; index < checkouts.length; index++ ) { %>
+                <tr>
+                    <th scope="row"><%= index+1 %></td>
+                    <td><%= checkouts[index].name %></td>
+                    <td><%= checkouts[index].email %></td>
+                    <td><%= checkouts[index].phone %></td>
+                    <td><%= checkouts[index].address %></td>
+                    <td><%= checkouts[index].postal %></td>
+                    <td><%= checkouts[index].cart %></td>
+                    <td>
+                            <a href="/checkout-manage/delete/<%= checkouts[index]._id %>">Del</a>
+                    </td>
+                    
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    </div>
+    
+    
+    

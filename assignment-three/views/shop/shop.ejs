@@ -1,0 +1,85 @@
+<div class="heropage-container">
+        <div class="heropage-modules-container">
+            <div class="heropage-heading-container">
+                <h1>
+                    Awesome Books For Awesome Kids
+                </h1>
+                <p>#1 Seller of May <br/>Win - Win Strategy by Frank has broken record of 2024 sellers</p>
+                <button onclick="window.location='/shop/#list'">Visit Store</button>
+            </div>
+            <div class="heropage-picture-container">
+                <img src="/assets/shop-book.png"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-shape-divider-top-1715971801">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+        
+    <div class="shop-books-container">
+        <div class="shop-title-container">
+            <p>Shop Online</p>
+            <h1>Latest Books Online</h1>
+            <br/>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae et qui sapiente rem explicabo nihil quidem non voluptas ratione consequatur cum</p>    
+        </div>
+       <div class="shop-books-table-container" id="list">
+
+            <div class="shop-books-table-search-container">
+                <form method="post" action="">
+                <input type="text" name="search" placeholder="Search Book"/>
+                <input id="search-button" type="submit" name="submit" value="Search"/>
+
+            </form>
+            </div>
+
+
+        
+            <div class="shop-books-table" id="list">
+
+                <div class="shop-books-table-page-size-container">
+                    <% for( let index = 1; index <= totalPages; index++ ) { %>
+                        <a href="/shop/<%= index %>#list"><%= index %></a>
+                    <% } %>
+                </div>
+
+
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                
+                <div class="shop-product-container">
+                    <a id="shop-book-link" href="/shop/book/<%= products[index]._id %>">
+                    <div class="shop-product-image-container">
+                        <img src="<%= products[index].image %>"/>
+                    </div>
+                    <div class="shop-product-text-container">
+                        <h3><%= products[index].title %></h3></a>
+                        <p><%= products[index].description %></p>
+                    </div>
+
+                    <div class="shop-product-button-container">
+                        <button id="see-more-book" onclick="window.location='/shop/book/<%= products[index]._id %>'">See more</button>
+                        <% if(cart.some(item => item.id === products[index]._id.toString())) { %>
+                            <button id="delete-from-cart-book" onclick="window.location='/shop/delete-from-cart/<%= products[index]._id %>'">-</button>
+                            <% } else {  %>
+                        <button id="add-to-cart-book" onclick="window.location='/shop/add-to-cart/<%= products[index]._id %>'">+</button>                    
+                        <% } %>
+                    </div>
+                </div>
+
+                <% if(products.length-1!=index){ %><div class="shop-books-table-line"></div> <% } %>
+                
+            <% } %>
+
+            <div class="shop-books-table-page-size-container">
+                <% for( let index = 1; index <= totalPages; index++ ) { %>
+                    <a href="/shop/<%= index %>#list"><%= index %></a>
+                <% } %>
+            </div>
+            
+        </div>
+        </div>
+    </div>

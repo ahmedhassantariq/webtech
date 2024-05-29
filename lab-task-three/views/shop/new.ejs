@@ -1,0 +1,12 @@
+<div class="submission-container">
+<div class="submission-card-container">
+    <h3>Add Product</h3>
+<form  action="" method="post" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Title" required> <br/>
+    <input type="text"  name="description" placeholder="Description" required/> <br/>
+    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="price" placeholder="Price" required/><br/>
+    <input type="file" label="image" name="image" accept=".jped, .jpg, .png" required />
+    <input id="submission-button" type="submit" value="Add" /> <br/>
+</form>
+</div>
+</div>

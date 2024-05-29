@@ -1,0 +1,32 @@
+<div>
+<h1>Manage Portfolio</h1>
+<a href="/portfolio-manage/new">Add New Product</a>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for( let index = 0; index < products.length; index++ ) { %>
+            <tr>
+                <th scope="row"><%= index+1 %></td>
+                <td><img src="<%= products[index].image %>" width="50px"/></td>
+                <td><%= products[index].title %></td>
+                <td><%= products[index].description %></td>
+                <td>
+                        <a href="/portfolio-manage/delete/<%= products[index]._id %>">Del</a>
+                        <a href="/portfolio-manage/edit/<%= products[index]._id %>">Edit</a>
+                </td>
+                
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+</div>
+
+

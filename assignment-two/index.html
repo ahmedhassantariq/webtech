@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Home Decor</title>
+        <link rel="stylesheet" href="styles.css"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="/Github/web-technologies/term-project/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+        <script>
+            function handleFormSubmit(event){
+                console.log("Handle Form Submit Called");
+                console.log(event);
+                
+                let uname = document.getElementById("form-username");
+                let email = document.getElementById("form-email");
+                let message = document.getElementById("form-message");
+                if(uname.value && email.value && message.value && email.value == value.email){
+                    
+                    document.getElementById('submitBtn').style.backgroundColor = '#fdb681';
+                }else{
+                    console.log("Form is invalid");
+                    event.preventDefault();
+                    uname.classList.add('error');
+                    email.classList.add("error");
+                    message.classList.add("error")
+                    document.getElementById('submitBtn').style.backgroundColor = 'red';
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="navbar-container">
+            <img src='assets/logo.svg'alt='' />
+            <div class="navbar-container-links">
+                <a class="un" href="#home">Home</a>
+                <a class="un" href="#skills">Skills</a>
+                <a class="un" href="#about">About</a>
+                <a class="un" href="#contact">Contact</a>
+                <a class="un" href="/term-project/stories.html">Stories</a>
+            </div>
+            <button class="signin-button" role="button" >Sign Up</button>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Building Lively Homes Inside</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi in quam laudantium quo. Sequi illum repudiandae libero id aliquam pariatur fugit ullam facilis, eveniet repellat numquam culpa fuga, sunt accusamus.</p>
+                <button>Contact Us</button>
+            </div>
+                <div class="slider-wrapper">
+                    <div class="slider-nav-images">
+                        <!-- <a href="#slide-1"></a>
+                        <a href="#slide-2"></a>
+                        <a href="#slide-3"></a>
+                        <a href="#slide-4"></a> -->
+                        <a href="#slide-1"> <img class='shape' src='assets/discover-1.jpg' height="80" width="80" /></a>
+                        <a href="#slide-2"> <img class='shape' src='assets/discover-2.jpg' height="80" width="80" /></a>
+                        <a href="#slide-3"> <img class='shape' src='assets/discover-3.jpg' height="80" width="80" /></a>
+                        <a href="#slide-4"> <img class='shape' src='assets/discover-4.jpg' height="80" width="80" /></a>
+                    </div>
+                    
+                    <div class="slider">
+                        <img id="slide-1" class='shape' src='/term-project/assets/discover-1.jpg' />
+                        <img id="slide-2" class='shape' src='/term-project/assets/discover-2.jpg' />
+                        <img id="slide-3" class='shape' src='/term-project/assets/discover-3.jpg' />
+                        <img id="slide-4" class='shape' src='/term-project/assets/discover-4.jpg' />
+                    </div>
+                </div>
+        </div>
+
+        <div class="discover-container">
+            <h1>What do we Create?</h1>
+            <div class="discover-cards-container">
+                
+                <div class="discover-card">
+                    <img src="./assets/bathroom.jpg" >
+                    <div class="discover-card-text"><p>Bathroom</p></div>
+                </div>
+                <div class="discover-card">
+                    <img src="./assets/bedroom.jpg" >
+                    <div class="discover-card-text"><p>Bedroom</p></div>
+                </div>
+                <div class="discover-card">
+            
+                    <img src="./assets/kitchen.jpg" >
+                    <div class="discover-card-text"><p>Kitchen</p></div>
+                </div>
+                <div class="discover-card">
+                    <img src="./assets/lounge.jpg" >
+                    <div class="discover-card-text"><p>Lounge</p></div>
+                </div>
+            </div>
+
+            <div class="discover-dialog-container">
+                <div class="discover-picture-container">
+                    <!-- <img id="discover-img" class='shape' src='assets/discover-2.jpg' /> -->
+                    <video src="/term-project/assets/discover-video.mp4" controls autoplay loop id="discover-video" class="shape"></video>
+                </div>
+
+                <div class="discover-text-container">
+                    <h1>Our Design Methodology</h1>
+                    <p>Our experts use cutting edge deisgning tools and modern techniques to make your home look perfect.</p>
+                    <p>We have made 1000+ homes look perfect.
+                    </p>
+                    <button class="discover-button" onclick="pressBtn()">Discover More</button>
+                   
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+   
+</html>

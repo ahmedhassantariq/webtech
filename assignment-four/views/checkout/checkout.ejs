@@ -1,0 +1,14 @@
+<div class="submission-container">
+    <div class="submission-card-container">
+        <h3>Checkout Information</h3>
+    <form  action="" method="post" >
+        <input type="text" name="name" placeholder="Name" required> <br/>
+        <input type="email"  name="email" placeholder="Email" required/> <br/>
+        <input type="text"  name="address" placeholder="Address" required/> <br/>
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="postal" placeholder="Postal Code" required/><br/>
+        <input type="text"  name="phone" placeholder="Phone" required/> <br/>
+        
+        <input id="submission-button" type="submit" value="Confirm Order" /> <br/>
+    </form>
+    </div>
+    </div>

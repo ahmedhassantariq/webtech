@@ -1,0 +1,26 @@
+<div class="product-container">
+    <div class="product-text-image-container">
+        <div class="product-image-container">
+            <img src="<%= product.image %>"/>
+        </div>
+        <div class="product-text-actions-container">
+            <div class="product-text-container">
+                <h3><%= product.title %></h3>
+                <p><%= product.description %></p>
+                <h4>$<%= product.price %></h4>
+
+            </div>
+            
+            <div class="product-actions-container">
+                <% if(!isAdded) { %>
+                <button id="add-to-cart-book" onclick="window.location='/shop/book/add-to-cart/<%= product._id %>'">Add to Cart</button>
+                <% } else { %>
+                <button id="delete-from-cart-book" onclick="window.location='/shop/book/delete-from-cart/<%= product._id %>'">Remove from Cart</button>
+                <% } %>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+

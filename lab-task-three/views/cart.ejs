@@ -1,0 +1,67 @@
+<div class="cart-container">
+    <div class="cart-items-container">
+    <div class="cart-heading-container">
+        <h1>Cart</h1>
+        <a href="/shop/clear-cart">Clear Cart</a>
+    </div>
+    
+    <hr/>
+    <% let totalPrice = 0 %>
+    <% if(products.length==0) { %>
+        <h3>Whoops! Cart is Empty</h3>
+        <% } %>
+        <% products.forEach((product, index) => { %>
+            <div class="cart-product-container">
+                
+                <div class="cart-product-image-text-container">
+                <div class="cart-product-image-container">
+                    <img src="<%= product.image %>"/>
+                </div>
+                <div class="cart-product-text-container">
+                    <a href="/shop/book/<%= product._id %>"><h3 ><%= product.title %></h3></a>
+                    
+                    <p><%= product.description %></p>
+                </div>
+            </div>
+
+            <% totalPrice += parseInt(product.price) %>
+                <div class="cart-product-button-container">
+                    <h3>$<%= product.price %></h3>
+                    <p>Qty: <%= cart[index].qty %> </p>
+                    <a href="/shop/inc-cart/<%= product._id %>">+</a>
+                    <a href="/shop/delete-from-cart/<%= product._id %>">Remove</a>
+                    <a href="/shop/dec-cart/<%= product._id %>">-</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="cart-delivery-container">
+        <h1>Delivery</h1>
+        <hr/>
+        <input type="text" name="promo-code" placeholder="Promo Code"/>
+        <hr/>
+        <div class="cart-gap-container">
+            <p>Items</p><p><%= products.length %></p>
+        </div>
+        <div class="cart-gap-container">
+            <p>Discount</p><p>$<%= totalPrice %></p>
+        </div>
+        <div class="cart-gap-container">
+            <p>Taxt</p><p>$<%= totalPrice %></p>
+        </div>
+        <div class="cart-gap-container">
+            <p>Delivery</p><p>$<%= totalPrice %></p>
+        </div>
+        <hr/>
+        <div class="cart-gap-container">
+            <h5>Total</h5><h5>$<%= totalPrice %></h5>
+        </div>
+        
+
+        <div class="cart-buttons-container">
+        <button id="cart-checkout-button" onclick="window.location='/checkout'">Proceed to checkout</button>
+        <button id="cart-shopping-button" onclick="window.location='/shop'">Continue shopping</button>
+    </div>
+    </div>
+</div>
